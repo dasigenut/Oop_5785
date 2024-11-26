@@ -1,4 +1,5 @@
 ﻿using Memory;
+using System.Text;
 
 internal class Program
 {
@@ -16,6 +17,10 @@ internal class Program
     {
         public int x;
         public int y;
+        public int x1;
+        public int y1;
+        public int x2;
+        public int y2;
     }
 
 
@@ -40,8 +45,17 @@ internal class Program
     static void MeasureStructMemory()
     {
         long before = GC.GetAllocatedBytesForCurrentThread();
-        PointStruct pointStruct = new PointStruct(); // new has no effect!
+        PointStruct pointStruct; // = new PointStruct(); // new has no effect!
         pointStruct.x = 17;
+        long after = GC.GetAllocatedBytesForCurrentThread();
+        Console.WriteLine($"MeasureStructMemory: Allocated Memory={after - before}");
+    }
+
+    static void MeasureClassMemory()
+    {
+        long before = GC.GetAllocatedBytesForCurrentThread();
+        PointClass pointClass = new PointClass();
+        pointClass.x = 17;
         long after = GC.GetAllocatedBytesForCurrentThread();
         Console.WriteLine($"MeasureStructMemory: Allocated Memory={after - before}");
     }
@@ -49,9 +63,21 @@ internal class Program
     static void MeasureStringMemory()
     {
         long before = GC.GetAllocatedBytesForCurrentThread();
-        string s = new string("hello world");
-        long after = GC.GetAllocatedBytesForCurrentThread();
-        Console.WriteLine($"MeasureStringMemory: Allocated Memory={after - before}");
+
+        string s = "hello world";
+        s = s + "!";
+        s = s + " " + s;
+        Console.WriteLine($"s={s}");
+
+        long after1 = GC.GetAllocatedBytesForCurrentThread();
+        Console.WriteLine($"MeasureStringMemory: Allocated Memory={after1 - before}");
+
+        StringBuilder sb = new StringBuilder("hello world");
+        sb.Append(s);
+        Console.WriteLine($"sb={sb.ToString()}");
+
+        long after2 = GC.GetAllocatedBytesForCurrentThread();
+        Console.WriteLine($"MeasureStringMemory: Allocated Memory={after2 - after1}");
     }
 
     static void TryToModifyString(string s)
@@ -85,6 +111,8 @@ internal class Program
         // MeasureStringMemory();
 
         // MeasureStructMemory();
+
+        // MeasureClassMemory();
 
         // int[] arr1 = { 1, 2, 3, 4 };
         // Console.WriteLine(string.Join(",", arr1));

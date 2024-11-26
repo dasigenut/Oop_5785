@@ -1,4 +1,6 @@
-﻿internal class Program
+﻿using Memory;
+
+internal class Program
 {
     struct PointStruct
     {
@@ -35,6 +37,28 @@
         Recursion();
     }
 
+    static void MeasureStructMemory()
+    {
+        long before = GC.GetAllocatedBytesForCurrentThread();
+        PointStruct pointStruct = new PointStruct(); // new has no effect!
+        pointStruct.x = 17;
+        long after = GC.GetAllocatedBytesForCurrentThread();
+        Console.WriteLine($"MeasureStructMemory: Allocated Memory={after - before}");
+    }
+
+    static void MeasureStringMemory()
+    {
+        long before = GC.GetAllocatedBytesForCurrentThread();
+        string s = new string("hello world");
+        long after = GC.GetAllocatedBytesForCurrentThread();
+        Console.WriteLine($"MeasureStringMemory: Allocated Memory={after - before}");
+    }
+
+    static void TryToModifyString(string s)
+    {
+        s = "hello";
+    }    
+
     static void MeasureMemory()
     {
         long before = GC.GetAllocatedBytesForCurrentThread();
@@ -51,10 +75,21 @@
 
     private static void Main(string[] args)
     {
-        int[] arr1 = { 1, 2, 3, 4 };
-        Console.WriteLine(string.Join(",", arr1));
-        ModifyArray(arr1);
-        Console.WriteLine(string.Join(",", arr1));
+        ClassWithDtor.TestGC();
+
+        // -- Demostrate string immutability
+        // string s1 = "hi";
+        // TryToModifyString(s1);
+        // Console.WriteLine($"s1={s1}");
+
+        // MeasureStringMemory();
+
+        // MeasureStructMemory();
+
+        // int[] arr1 = { 1, 2, 3, 4 };
+        // Console.WriteLine(string.Join(",", arr1));
+        // ModifyArray(arr1);
+        // Console.WriteLine(string.Join(",", arr1));
 
         // Recursion();
 

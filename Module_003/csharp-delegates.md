@@ -71,7 +71,7 @@ Action<string> print = Console.WriteLine;
 3. **Strategy Pattern**
 4. **LINQ Operations**
 
-## Advanced Example: Strategy Pattern
+## Example: Calculator Using Strategy Pattern
 
 ```csharp
 public class Calculator 
@@ -88,6 +88,42 @@ public class Calculator
 var calc = new Calculator();
 int result = calc.PerformOperation(10, 5, (x, y) => x * y);
 ```
+
+
+## Example: Comparison
+
+Documentation of the Array.Sort function [here](https://learn.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-9.0#system-array-sort-1(-0()-system-comparison((-0)))):
+
+```csharp
+public static void Sort<T> (T[] array, Comparison<T> comparison);
+```
+Sorts the elements in an Array using the specified Comparison<T>.
+
+And the [documentation for Comparison](https://learn.microsoft.com/en-us/dotnet/api/system.comparison-1?view=net-9.0):
+
+```csharp
+public delegate int Comparison<in T>(T x, T y);
+```
+Represents the method that compares two objects of the same type.
+
+### Example: Sorting an Array Using a Comparison function
+
+```csharp
+list.Add("Isaac");
+list.Add("Jacob");
+list.Add("Moses");
+list.Add("Binyamin");
+list.Add("Avraham");
+
+static int CompareLength(string a, string b)
+{
+    return a.Length - b.Length;
+}
+
+list.Sort(CompareLength);
+```
+
+
 
 ## Lambda Expressions and Delegates
 

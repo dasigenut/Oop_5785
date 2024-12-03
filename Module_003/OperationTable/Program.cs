@@ -28,13 +28,26 @@ internal class Program
 
         public override string ToString()
         {
+            int maxWidth = 0;
+            for (int row = 0; row < results.GetLength(0); row++)
+            {
+                for (int col = 0; col < results.GetLength(1); col++)
+                {
+                    string s = results[row, col].ToString();
+                    maxWidth = Math.Max(maxWidth, s.Length);
+                }
+            }
+
             string res = "";
             for (int row = 0; row < results.GetLength(0); row++)
             {
                 for (int col = 0; col < results.GetLength(1); col++)
                 {
-                    res += results[row, col].ToString();
-                    res += ",";
+                    res += results[row, col].ToString().PadLeft(maxWidth, ' ');
+                    if (col < results.GetLength(1) - 1)
+                    {
+                        res += ",";
+                    }
                 }
                 res += "\n";
             }

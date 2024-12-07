@@ -35,6 +35,9 @@ Course 96502.1.1
 - **Upcasting and downcasting**
 - **Polymorphic behavior with virtual methods**
 
+## Exception Handling
+
+
 ## Composite Design Pattern
 - **Introduction to Design Patterns**
 - **Composite Pattern Basics**

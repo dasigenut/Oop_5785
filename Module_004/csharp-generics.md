@@ -1,4 +1,4 @@
-# Understanding C# Generics
+# C# Generics
 
 ## Introduction to Generics
 

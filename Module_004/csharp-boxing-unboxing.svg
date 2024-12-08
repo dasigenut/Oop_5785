@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
   <!-- Background -->
-  <rect width="800" height="400" fill="#f4f4f4"/>
+  <rect x="-10" y="0" width="810" height="526" fill="#f4f4f4"/>
   
   <!-- Title -->
-  <text x="400" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="#333">
+  <text x="400" y="40" text-anchor="middle" font-size="24" font-weight="bold" fill="#333333">
     Boxing and Unboxing in C#
   </text>
 
@@ -15,36 +15,36 @@
     </text>
 
   <!-- Stack Memory Representation -->
-  <rect x="100" y="200" width="300" height="180" fill="#e0e0e0" stroke="#666" stroke-width="2"/>
-  <text x="250" y="220" text-anchor="middle" font-size="18" fill="#333">Stack</text>
+  <rect x="114" y="200" width="286" height="269" fill="#e0e0e0" stroke="#666666" stroke-width="2"/>
+  <text x="250" y="220" text-anchor="middle" font-size="18" fill="#333333">Stack</text>
 
   <!-- Heap Memory Representation -->
-  <rect x="450" y="200" width="300" height="180" fill="#e0e0e0" stroke="#666" stroke-width="2"/>
-  <text x="600" y="220" text-anchor="middle" font-size="18" fill="#333">Heap</text>
+  <rect x="450" y="200" width="300" height="180" fill="#e0e0e0" stroke="#666666" stroke-width="2"/>
+  <text x="600" y="220" text-anchor="middle" font-size="18" fill="#333333">Heap</text>
 
   <!-- Stack Contents -->
-  <rect x="150" y="250" width="200" height="50" fill="#4CAF50" stroke="#000">
+  <rect x="150" y="250" width="200" height="50" fill="#4caf50" stroke="#000000">
     <title>x value type</title>
   </rect>
   <text x="250" y="280" text-anchor="middle" fill="white">x = 42</text>
 
-  <rect x="150" y="310" width="200" height="50" fill="#2196F3" stroke="#000">
+  <rect x="150" y="310" width="200" height="50" fill="#2196f3" stroke="#000000">
     <title>o reference</title>
   </rect>
   <text x="250" y="340" text-anchor="middle" fill="white">o (reference)</text>
 
-  <rect x="150" y="370" width="200" height="50" fill="#4CAF50" stroke="#000">
+  <rect x="150" y="370" width="200" height="50" fill="#4caf50" stroke="#000000">
     <title>y value type</title>
   </rect>
   <text x="250" y="400" text-anchor="middle" fill="white">y = 42</text>
   
   <!-- Arrow to Heap -->
-  <path d="M250,335 L450,300" 
-        fill="none" stroke="#FF5722" stroke-width="3" 
+  <path d="M 250 335 L 450 300" 
+        fill="none" stroke="#ff5722" stroke-width="3" 
         marker-end="url(#arrowhead)"/>
 
   <!-- Heap Object -->
-  <rect x="500" y="250" width="200" height="100" fill="#9C27B0" stroke="#000"/>
+  <rect x="500" y="250" width="200" height="100" fill="#9c27b0" stroke="#000000"/>
   <text x="600" y="280" text-anchor="middle" fill="white">Boxed Object</text>
   <text x="600" y="310" text-anchor="middle" fill="white">Value: 42</text>
 
@@ -52,7 +52,7 @@
   <defs>
     <marker id="arrowhead" markerWidth="10" markerHeight="7" 
             refX="0" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+      <polygon points="0,0 10,3.5 0,7" fill="#000000"/>
     </marker>
   </defs>
 </svg>

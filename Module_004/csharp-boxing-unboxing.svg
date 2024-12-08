@@ -39,7 +39,7 @@
   <text x="250" y="400" text-anchor="middle" fill="white">y = 42</text>
   
   <!-- Arrow to Heap -->
-  <path d="M 300 335 L 450 300" 
+  <path d="M 300 335 L 500 300" 
         fill="none" stroke="#ff5722" stroke-width="3" 
         marker-end="url(#arrowhead)"/>
 

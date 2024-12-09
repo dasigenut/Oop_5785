@@ -23,14 +23,35 @@ public class SumCalculator
         return _sum;
     }
 
-    //public static void Main()
-    //{
-    //    int[] numbers = { 1, 2, 3, 4, 5 };
-    //    var sumCalculator = new SumCalculator();
+    public class MaxCalculator
+{
+    private int _max = int.MinValue;
+
+    public void UpdateMax(int number)
+    {
+        if (number > _max)
+        {
+            _max = number;
+        }
+    }
+
+    public int GetMax()
+    {
+        return _max;
+    }
+}
+    public static void Main()
+    {
+       int[] numbers = { 1, 2, 3, 4, 5 };
+       var sumCalculator = new SumCalculator();
         
-    //    ArrayProcessor.ProcessArray(numbers, sumCalculator.AddToSum);
+       ArrayProcessor.ProcessArray(numbers, sumCalculator.AddToSum);
         
-    //    int totalSum = sumCalculator.GetSum(); // Returns 15
-    //    Console.WriteLine($"Total sum: {totalSum}");
-    //}
+       int totalSum = sumCalculator.GetSum(); // Returns 15
+       Console.WriteLine($"Total sum: {totalSum}");
+    }
+    var maxCalculator = new MaxCalculator();
+        ArrayProcessor.ProcessArray(numbers, maxCalculator.UpdateMax);
+        int max = maxCalculator.GetMax();
+        Console.WriteLine($"Maximum value: {max}");
 }

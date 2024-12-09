@@ -89,7 +89,6 @@ var calc = new Calculator();
 int result = calc.PerformOperation(10, 5, (x, y) => x * y);
 ```
 
-
 ## Example: Comparison
 
 Documentation of the Array.Sort function [here](https://learn.microsoft.com/en-us/dotnet/api/system.array.sort?view=net-9.0#system-array-sort-1(-0()-system-comparison((-0)))):
@@ -106,7 +105,7 @@ public delegate int Comparison<in T>(T x, T y);
 ```
 Represents the method that compares two objects of the same type.
 
-### Example: Sorting an Array Using a Comparison function
+### Sorting an Array Using a Comparison function
 
 ```csharp
 list.Add("Isaac");
@@ -123,7 +122,51 @@ static int CompareLength(string a, string b)
 list.Sort(CompareLength);
 ```
 
+## Method Delegates
 
+A delegate can point to a method of an object,
+and in such case the delegate will point to a specific instance.
+
+```csharp
+class Counter
+{
+    public int count = 0;
+
+    public void Increment(int val)
+    {
+        count += val;
+    }
+}
+
+delegate void F(int val);
+
+private static void Main(string[] args)
+{
+    Counter c1 = new Counter();
+    Counter c2 = new Counter();
+    F f1 = c1.Increment;
+    F f2 = c2.Increment;
+
+    f1(3);
+    f2(5);
+
+    Console.WriteLine($"c1={c1.count}, c2={c2.count}");
+
+    F f3 = f1 + f2;
+    f3(10);
+    Console.WriteLine($"c1={c1.count}, c2={c2.count}");
+}
+```
+`f1` points to the method Increment and to the object c1.
+Calling `f1()` is like calling `c1.Increment()`.
+`f2` also points to the method Increment, but with the object c2.
+
+The outout of the program will be:
+
+```
+c1=3, c2=5
+c1=13, c2=15
+```
 
 ## Lambda Expressions and Delegates
 

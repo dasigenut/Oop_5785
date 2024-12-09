@@ -65,6 +65,18 @@ internal class Program
         return a + b;
     }
 
+    class Counter
+    {
+        public int count = 0;
+
+        public void Increment(int val)
+        {
+            count += val;
+        }
+    }
+
+    delegate void F(int val);
+
     private static void Main(string[] args)
     {
         //ComparerExample arr1 = new ComparerExample();
@@ -74,6 +86,26 @@ internal class Program
         //arr1.Sort();
         //Console.WriteLine($"Array sorted with default comparison:\n{arr1}");
         //Console.WriteLine("==================");
+
+        Counter c1 = new Counter();
+        Counter c2 = new Counter();
+        F f1 = c1.Increment;
+        F f2 = c2.Increment;
+
+        f1(3);
+        f2(5);
+
+        Console.WriteLine($"c1={c1.count}, c2={c2.count}");
+
+        F f3 = f1 + f2;
+        f3(10);
+        Console.WriteLine($"c1={c1.count}, c2={c2.count}");
+
+        f2 = f1;
+        f3(11);
+        Console.WriteLine($"c1={c1.count}, c2={c2.count}");
+
+        return;
 
         int d = 2;
 
